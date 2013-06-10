@@ -1,0 +1,10 @@
+
+#book-stack {
+  /* override jquery.stackview.css book view height */
+  height: auto
+}
+
+.book-related-infobox {
+  /*border: 1px solid #eee;*/
+  min-height: 600px;
+}

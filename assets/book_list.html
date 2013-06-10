@@ -1,0 +1,180 @@
+
+<!DOCTYPE html>
+<!--[if IE 8]> 				 <html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+
+<head>
+	<meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width" />
+  <title>Book List View, by Author</title>
+
+  <script src="js/vendor/custom.modernizr.js"></script>
+  <link rel="stylesheet" href="css/foundation.css" />
+  <link rel="stylesheet" href="css/jquery.stackview.css" />
+  <link rel="stylesheet" href="css/main.css" />
+
+
+</head>
+<body>
+
+  <div class="row">
+    <div class="large-12 columns">
+      <h2>The publications of Joseph L. Badaracco</h2>
+      <p>This is roughly how all book lists look/act</p>
+      <hr />
+    </div>
+  </div>
+
+
+  <div class="row">
+    <div class="large-12 columns">
+      <!-- TODO: StackView widget goes here -->
+      <div class="large-6 small-12 columns">
+        <div id="book-stack"> </div>
+      </div>
+      <div id="book-related" class="large-6 small-12 columns panel book-related-infobox">
+        <div class="small-12 columns book-title">
+          <h5> Questions of Character: Illuminating the Heart of Leadership Through Literature</h5>
+        </div>
+        <div class="small-4 columns">
+          <img alt="Example Author Headshot" src="http://placehold.it/140/148"/>
+        </div>
+        <div class="small-8 columns">
+          <ul class="vcard">
+            <li class="fn">Joseph L. Badaracco</li>
+            <li class="title">John Shad Professor of Business Ethics</li>
+          </ul>
+        </div>
+        <div class="small-12 columns panel">
+          <p class="bio">
+            Joseph L. Badaracco is the John Shad Professor of Business Ethics at Harvard Business School. He has taught courses on business ethics, strategy, and management in the School's MBA and executive programs. <a href="#">read more...</a>
+          </p>
+        </div>
+
+
+
+        <div class="small-12 columns">
+          <h6>related works</h6>
+          <span>Stuff and thingsStuff and thingsStuff and thingsStuff and things!!!! </span>
+        </div>
+      </div>
+    </div> <!--.large-12 columns-->
+  </div>
+
+
+
+
+  <script>
+  document.write('<script src=' +
+  ('__proto__' in {} ? 'js/vendor/zepto' : 'js/vendor/jquery') +
+  '.js><\/script>')
+  </script>
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+  <script src="js/foundation.min.js"></script>
+  <!-- minified stackview -->
+  <script src="js/jquery.stackview.min.js "></script>
+  <!--
+  <script src="js/foundation/foundation.js"></script>
+  <script src="js/foundation/foundation.alerts.js"></script>
+  <script src="js/foundation/foundation.clearing.js"></script>
+  <script src="js/foundation/foundation.cookie.js"></script>
+  <script src="js/foundation/foundation.dropdown.js"></script>
+  <script src="js/foundation/foundation.forms.js"></script>
+  <script src="js/foundation/foundation.joyride.js"></script>
+  <script src="js/foundation/foundation.magellan.js"></script>
+  <script src="js/foundation/foundation.orbit.js"></script>
+  <script src="js/foundation/foundation.placeholder.js"></script>
+  <script src="js/foundation/foundation.reveal.js"></script>
+  <script src="js/foundation/foundation.section.js"></script>
+  <script src="js/foundation/foundation.tooltips.js"></script>
+  <script src="js/foundation/foundation.topbar.js"></script>
+  <script src="js/foundation/foundation.interchange.js"></script>
+  -->
+
+  <script>
+    $(document).foundation();
+    //var data = $.ajax('js/json/static.json');
+    //$(document).ready(function(){
+    //
+    //  $('#book-stack').stackView({
+    //          url: 'js/json/awesome.json'
+    //  });
+    //});
+
+    // http://www.hbs.edu/faculty/Pages/profile.aspx?facId=6415
+    // Joseph L. Badaracco
+    //
+    $(function () {
+      var data =
+      {"start": "-1", "limit": "0", "num_found": "8", "docs":
+      [
+        {
+            "title": "Questions of Character: Illuminating the Heart of Leadership Through Literature.",
+            "creator": [
+                "Badaracco, Joseph L., Jr."
+            ],
+            "measurement_page_numeric": 221,
+            "measurement_height_numeric": 25,
+            "shelfrank": 92,
+            "pub_date": "2006",
+            "link": "http://holliscatalog.harvard.edu/?itemid=|library/m/aleph|009189638"
+        },
+        {
+            "title": "Leading Quietly: An Unorthodox Guide to Doing the Right Thing",
+            "creator": [
+                "Badaracco, Joseph L., Jr."
+            ],
+            "measurement_page_numeric": 382,
+            "measurement_height_numeric": 25,
+            "shelfrank": 57,
+            "pub_date": "2002",
+            "link": "http://holliscatalog.harvard.edu/?itemid=|library/m/aleph|009189638"
+        },
+        {
+            "title": "Defining Moments: When Managers Must Choose between Right and Right",
+            "creator": [
+                "Badaracco, Joseph L., Jr."
+            ],
+            "measurement_page_numeric": 582,
+            "measurement_height_numeric": 30,
+            "shelfrank": 12,
+            "pub_date": "1997",
+            "link": "http://holliscatalog.harvard.edu/?itemid=|library/m/aleph|009189638"
+        },
+        {
+            "title": "Business Ethics: Roles and Responsibilities.",
+            "creator": [
+                "Badaracco, Joseph L., Jr."
+            ],
+            "measurement_page_numeric": 582,
+            "measurement_height_numeric": 35,
+            "shelfrank": 42,
+            "pub_date": "1994",
+            "link": "http://holliscatalog.harvard.edu/?itemid=|library/m/aleph|009189638"
+        },
+        {
+            "title": "The Knowledge Link",
+            "creator": [
+                "Badaracco, Joseph L., Jr."
+            ],
+            "measurement_page_numeric": 582,
+            "measurement_height_numeric": 35,
+            "shelfrank": 49,
+            "pub_date": "1991",
+            "link": "http://holliscatalog.harvard.edu/?itemid=|library/m/aleph|009189638"
+        }
+      ]
+      };
+
+      $('#book-stack').stackView({
+          data: data,
+          ribbon: "Badaracco, Joseph L., Jr."
+          });
+    });
+
+
+
+  </script>
+</body>
+</html>
