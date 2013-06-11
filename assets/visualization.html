@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<!--[if IE 8]> 				 <html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+
+<head>
+	<meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width" />
+  <title>Demo visualization: Faculty by Unit</title>
+
+  <script src="js/vendor/custom.modernizr.js"></script>
+
+  <link rel="stylesheet" href="css/foundation.css" />
+  <link rel="stylesheet" href="css/jquery.stackview.css" />
+  <link href="//netdna.bootstrapcdn.com/font-awesome/3.1.1/css/font-awesome.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/main.css" />
+
+  <style>
+
+    circle {
+      /*fill: rgb(72,196,183);*/
+      /*fill-opacity: .25;*/
+      stroke: rgb(31, 119, 180);
+      stroke-width: 1px;
+    }
+
+    .leaf circle {
+      fill: #ff7f0e;
+      fill-opacity: 1;
+    }
+  </style>
+
+</head>
+<body>
+
+<header class="row panel">
+  <h1>03. Demo visualizations</h1>
+  <dl class="sub-nav">
+    <dt>Wireframe pages:</dt>
+    <dd><a href="./home.html">faculty index</a></dd>
+    <dd><a href="./book_list.html">book list</a></dd>
+    <dd class="active"><a href="./visualization.html">demo visualization</a></dd>
+  </dl>
+</header>
+
+
+<div class="row">
+  <div class="small-12 columns">
+    <h3>03a. Faculty by Unit</h3>
+    <h3 class="subheader">hover over circles to see what they represent</h3>
+  </div>
+  <div class="small-12 columns">
+    <div class="faculty_by_unit"> </div>
+  </div>
+</div>
+
+<footer>
+  <div class="row">
+    <div class="small-12 columns">
+      <small>
+          &copy; 2013 Harvard Business School
+          build by the <a href="#">Library Innovation Lab</a>
+          other example footer information
+      </small>
+    </div>
+  </div>
+</footer>
+
+
+  <script>
+  document.write('<script src=' +
+  ('__proto__' in {} ? 'js/vendor/zepto' : 'js/vendor/jquery') +
+  '.js><\/script>')
+  </script>
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+  <script src="js/foundation.min.js"></script>
+  <script src="js/foundation/foundation.section.js"></script>
+  <!-- minified stackview -->
+  <script src="js/jquery.stackview.min.js "></script>
+  <!-- d3js -->
+  <script src="http://d3js.org/d3.v3.min.js"></script>
+  <!--
+  <script src="js/foundation/foundation.js"></script>
+  <script src="js/foundation/foundation.alerts.js"></script>
+  <script src="js/foundation/foundation.clearing.js"></script>
+  <script src="js/foundation/foundation.cookie.js"></script>
+  <script src="js/foundation/foundation.dropdown.js"></script>
+  <script src="js/foundation/foundation.forms.js"></script>
+  <script src="js/foundation/foundation.joyride.js"></script>
+  <script src="js/foundation/foundation.magellan.js"></script>
+  <script src="js/foundation/foundation.orbit.js"></script>
+  <script src="js/foundation/foundation.placeholder.js"></script>
+  <script src="js/foundation/foundation.reveal.js"></script>
+  <script src="js/foundation/foundation.tooltips.js"></script>
+  <script src="js/foundation/foundation.topbar.js"></script>
+  <script src="js/foundation/foundation.interchange.js"></script>
+  -->
+
+  <script>
+    $(document).foundation();
+  </script>
+
+  <script>
+
+  var diameter = 960,
+      format = d3.format(",d"),
+      color = d3.scale.category20c();
+
+  var pack = d3.layout.pack()
+      .size([diameter - 4, diameter - 4])
+      .value(function(d) { return d.size; })
+      .padding(3);
+
+  var svg = d3.select(".faculty_by_unit").append("svg")
+      .attr("width", diameter)
+      .attr("height", diameter)
+    .append("g")
+      .attr("transform", "translate(2,2)");
+
+  d3.json("d3_hbs/hbs_units.json", function(error, root) {
+    // TODO: replace datam with a sub-element to pack a different shape
+    var node = svg.datum(root).selectAll(".node")
+        .data(pack.nodes)
+      .enter().append("g")
+        .attr("class", function(d) { return d.children ? "node" : "leaf node"; })
+        .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
+
+    node.append("title")
+        .text(function(d) { return d.name + (d.children ? "" : ": " + format(d.size)); });
+
+    node.append("circle")
+        .attr("r", function(d) { return d.r; })
+        .style("fill", function(d) { return color(d.name)});
+
+    //node.filter(function(d) { return !d.children; }).append("text")
+    //    .attr("dy", ".3em")
+    //    .style("text-anchor", "middle")
+    //    .text(function(d) { return d.name.substring(0, d.r / 3); });
+  });
+
+  d3.select(self.frameElement).style("height", diameter + "px");
+
+  </script>
+
+</body>
+</html>
