@@ -1,0 +1,56 @@
+header {
+  border: 1px solid #b6b6b6;
+  height: 8em;
+}
+footer {
+  background-color: #b6b6b6;
+  height: 70px;
+  color: white;
+}
+
+/* index style */
+/* END index style */
+
+#book-stack {
+  /* override jquery.stackview.css book view height */
+  height: auto
+}
+.book-related-infobox {
+  /*border: 1px solid #eee;*/
+  min-height: 600px;
+}
+
+/* Override orientation and position */
+#related-hbs-stack .stack-items,
+#related-stack .stack-items {
+  -webkit-transform: rotate(-90deg);
+  -moz-transform: rotate(-90deg);
+  -o-transform: rotate(-90deg);
+  transform: rotate(-90deg);
+}
+#related-hbs-stack .stack-item,
+#related-stack .stack-item {
+  webkittransform: rotate(180deg);
+  moztransform: rotate(180deg);
+  otransform: rotate(180deg);
+  transform: rotate(180deg);
+}
+
+#related-hbs-stack > ul.stack-items > li.stack-book.heat1 > a,
+#related-hbs-stack > ul.stack-items > li.stack-book.heat1 > a:visited,
+#related-stack > ul.stack-items > li.stack-book.heat1 > a,
+#related-stack > ul.stack-items > li.stack-book.heat1 > a:visited {
+  background-color: lightgray;
+}
+
+
+#related-hbs-stack .stack-navigation,
+#related-hbs-stack .ribbon,
+#related-hbs-stack .stack-items:after,
+#related-hbs-stack .spine-year,
+#related-stack .stack-navigation,
+#related-stack .ribbon,
+#related-stack .stack-items:after,
+#related-stack .spine-year {
+  display: none;
+}
