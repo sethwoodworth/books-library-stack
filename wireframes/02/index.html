@@ -17,15 +17,15 @@
 </head>
 <body>
 
-<header class="row panel">
+<header class="panel black">
   <div class="row">
-    <div class="small-12 large-8 columns large-centered">
+    <div class="small-12 large-10 columns large-centered">
       <h1>HBS Faculty Publications</h1>
     </div>
   </div>
   <div class="row">
     <div class="small-6 columns small-centered">
-      <dl class="sub-nav">
+      <dl class="sub-nav" style="display: none">
         <dt>Wireframe pages:</dt>
         <dd class="active"><a href="./index.html">faculty index</a></dd>
         <dd><a href="./book_list.html">book list</a></dd>
@@ -34,330 +34,110 @@
   </div> <!-- .row -->
 </header>
 
-<div class="row">
-  <div class="small-12 columns">
-    <div class="small-8 columns">
+<section class="vis">
+  <div class="row">
+
+    <div class="small-12 large-8 columns">
       <div class="faculty_by_unit"> </div>
     </div>
-    <div class="small-4 columns panel">
+
+    <div id="academic-units-box" class="small-12 large-4 columns panel side-panel">
       <div id="faculty-list" >
-      <!--
-      class="section-container accordion"
-          data-section="accordion"
-          data-options="one_up: false">
-      -->
-      <ul id=faculty-list-container>
-      </ul>
-      <!-- Units go here -->
-        <!-- Faculty go here -->
+        <h3>Academic Units</h3>
+        <ul id=faculty-list-container>
+        </ul>
       </div> <!-- #faculty-list -->
     </div>
+
+    <div  id="faculty-info-box"
+          class="small-12 large-4 columns panel side-panel"
+          style="display:none;">
+
+        <div class="row">
+
+
+          <div class="small-12 columns">
+            <h3 class="faculty-name">Joseph L. Badaracco</h3>
+            <img  alt="Example Author Headshot"
+                  style="margin:auto"
+                  src="http://placehold.it/140/148"/>
+          </div>
+
+
+          <div class="small-12 columns">
+            <span>Unit: <b class="unit-name">Organizational Behavior</b></span>
+            <br/>
+            <br/>
+            <br/>
+            <p>Interests:</p>
+            <ul>
+              <li> corporate culture </li>
+              <li> ethics </li>
+              <li> ethnography </li>
+              <li> qualitative research </li>
+              <li> self-organizing systems </li>
+            </ul>
+          </div>
+
+        </div> <!-- .row -->
+ 
+
+
+    </div> <!-- #faculty-info-box -->
+
   </div>
-</div>
-
-<div id="faculty_table" class="row section-container tabs" data-section="tabs" >
-  <section class="faculty-results">
-    <h4 class="title" data-section-title><a href="#by_faculty">01a. by faculty</a></h4>
-    <div class="content" data-section-content>
-      <!-- filter box -->
-      <div class="row">
-        <div class="small-12 columns">
-          <div class="row collapse">
-            <div class="small-3 large-1 columns">
-              <label for="filter-faculty" class="button prefix ">
-                <i class="icon-search"></i>
-              </label>
-            </div>
-            <div class="small-9 large-11 columns">
-              <input type="text" name="search" id="filter-faculty" value="" placeholder="find faculty by name" />
-            </div>
-          </div> <!--row-->
-          <hr/>
-        </div><!--small-12 columns-->
-      </div>
-
-      <div class="row">
-        <div class="small-12 columns">
-
-          <!-- FIXME: Do I add a row here? -->
-
-          <!-- List of faculty -->
-          <div class="small-12 large-6 columns panel result">
-            <div class="small-3 columns">
-              <img src="http://placehold.it/50x53" alt="example profressor headshot"/>
-            </div>
-            <div class="small-9 columns">
-              <span> Joseph L. Badaracco </span>
-              <br/>
-              <small>John Shad Professor of Business Ethics</small>
-            </div>
-          </div> <!--faculty entry-->
-
-          <div class="small-12 large-6 columns panel result">
-            <div class="small-3 columns">
-              <img src="http://placehold.it/50x53" alt="example profressor headshot"/>
-            </div>
-            <div class="small-9 columns">
-              <span> Joseph L. Bower </span>
-              <br/>
-              <small>Baker Foundation Professor</small>
-            </div>
-          </div> <!--faculty entry-->
-
-          <div class="small-12 large-6 columns panel result">
-            <div class="small-3 columns">
-              <img src="http://placehold.it/50x53" alt="example profressor headshot"/>
-            </div>
-            <div class="small-9 columns">
-              <span>Krishna G. Palepu</span>
-              <br/>
-              <small>Ross Graham Walker Professor of Business Administration</small>
-            </div>
-          </div> <!--faculty entry-->
-
-          <div class="small-12 large-6 columns panel result">
-            <div class="small-3 columns">
-              <img src="http://placehold.it/50x53" alt="example profressor headshot"/>
-            </div>
-            <div class="small-9 columns">
-              <span>Joseph L. Bower</span>
-              <br/>
-              <small> Senior Lecturer of Business Administration </small>
-            </div>
-          </div> <!--faculty entry-->
-
-          <div class="small-12 large-6 columns panel result">
-            <div class="small-3 columns">
-              <img src="http://placehold.it/50x53" alt="example profressor headshot"/>
-            </div>
-            <div class="small-9 columns">
-              <span>Robert G. Eccles</span>
-              <br/>
-              <small>Professor of Management Practice</small>
-            </div>
-          </div> <!--faculty entry-->
-
-          <div class="small-12 large-6 columns panel result">
-            <div class="small-3 columns">
-              <img src="http://placehold.it/50x53" alt="example profressor headshot"/>
-            </div>
-            <div class="small-9 columns">
-              <span>Krishna G. Palepu</span>
-              <br/>
-              <small>Ross Graham Walker Professor of Business Administration</small>
-            </div>
-          </div> <!--faculty entry-->
-
-          <div class="small-12 large-6 columns panel result">
-            <div class="small-3 columns">
-              <img src="http://placehold.it/50x53" alt="example profressor headshot"/>
-            </div>
-            <div class="small-9 columns">
-              <span>Krishna G. Palepu</span>
-              <br/>
-              <small>Ross Graham Walker Professor of Business Administration</small>
-            </div>
-          </div> <!--faculty entry-->
-
-          <div class="small-12 large-6 columns panel result">
-            <div class="small-3 columns">
-              <img src="http://placehold.it/50x53" alt="example profressor headshot"/>
-            </div>
-            <div class="small-9 columns">
-              <span>Krishna G. Palepu</span>
-              <br/>
-              <small>Ross Graham Walker Professor of Business Administration</small>
-            </div>
-          </div> <!--faculty entry-->
-
-        </div> <!-- search results container -->
-      </div>
-
-    </div> <!--.content $data-section-content -->
-  </section>
+</section>
 
 
-  <section class="unit-results">
-    <h4 class="title" data-section-title><a href="#by_unit">01b. by unit</a></h4>
-    <div class="content" data-section-content>
-      <!-- filter box -->
-      <div class="row">
-        <div class="small-12 columns">
-          <div class="row collapse">
-            <div class="small-3 large-1 columns">
-              <label for="filter-units" class="button prefix ">
-                <i class="icon-search"></i>
-              </label>
-            </div>
-            <div class="small-9 large-11 columns">
-              <input type="text" name="search" id="filter-units" value="" placeholder="filter managerial units" />
-            </div>
-          </div> <!--row-->
-          <hr/>
-        </div><!--small-12 columns-->
-      </div>
 
-      <div class="row">
-        <div class="small-12 columns">
+<section id="book-list-faculty" style="display:none">
 
-          <div class="small-12 large-6 columns panel result">
-            <div class="small-3 columns">
-              <img src="http://placehold.it/50x53" alt="example profressor headshot"/>
-            </div>
-            <div class="small-9 columns">
-              <h5>Accounting and Management</h5>
-            </div>
-          </div> <!--faculty entry-->
-
-          <div class="small-12 large-6 columns panel result">
-            <div class="small-3 columns">
-              <img src="http://placehold.it/50x53" alt="example profressor headshot"/>
-            </div>
-            <div class="small-9 columns">
-              <h5> Business, Government and the International Economy </h5>
-            </div>
-          </div> <!--faculty entry-->
-
-          <div class="small-12 large-6 columns panel result">
-            <div class="small-3 columns">
-              <img src="http://placehold.it/50x53" alt="example profressor headshot"/>
-            </div>
-            <div class="small-9 columns">
-              <h5> Entrepreneurial Management </h5>
-            </div>
-          </div> <!--faculty entry-->
-
-          <div class="small-12 large-6 columns panel result">
-            <div class="small-3 columns">
-              <img src="http://placehold.it/50x53" alt="example profressor headshot"/>
-            </div>
-            <div class="small-9 columns">
-              <h5> Finance </h5>
-            </div>
-          </div> <!--faculty entry-->
-
-          <div class="small-12 large-6 columns panel result">
-            <div class="small-3 columns">
-              <img src="http://placehold.it/50x53" alt="example profressor headshot"/>
-            </div>
-            <div class="small-9 columns">
-              <h5> General Management </h5>
-            </div>
-          </div> <!--faculty entry-->
-
-          <div class="small-12 large-6 columns panel result">
-            <div class="small-3 columns">
-              <img src="http://placehold.it/50x53" alt="example profressor headshot"/>
-            </div>
-            <div class="small-9 columns">
-              <h5> Marketing </h5>
-            </div>
-          </div> <!--faculty entry-->
-
-          <div class="small-12 large-6 columns panel result">
-            <div class="small-3 columns">
-              <img src="http://placehold.it/50x53" alt="example profressor headshot"/>
-            </div>
-            <div class="small-9 columns">
-              <h5> Negotiation, Organizations &amp; Markets </h5>
-            </div>
-          </div> <!--faculty entry-->
-
-          <div class="small-12 large-6 columns panel result">
-            <div class="small-3 columns">
-              <img src="http://placehold.it/50x53" alt="example profressor headshot"/>
-            </div>
-            <div class="small-9 columns">
-              <h5> Organizational Behavior </h5>
-            </div>
-          </div> <!--faculty entry-->
-
-          <div class="small-12 large-6 columns panel result">
-            <div class="small-3 columns">
-              <img src="http://placehold.it/50x53" alt="example profressor headshot"/>
-            </div>
-            <div class="small-9 columns">
-              <h5> Strategy </h5>
-            </div>
-          </div> <!--faculty entry-->
-
-          <div class="small-12 large-6 columns panel result">
-            <div class="small-3 columns">
-              <img src="http://placehold.it/50x53" alt="example profressor headshot"/>
-            </div>
-            <div class="small-9 columns">
-              <h5> Technology and Operations Management </h5>
-            </div>
-          </div> <!--faculty entry-->
-
-        </div> <!-- small-12 columns -->
-
-        <!--
-        Accounting and Management
-        Business, Government and the International Economy
-        Entrepreneurial Management
-        Finance
-        General Management
-        Marketing
-        Negotiation, Organizations &amp; Markets
-        Organizational Behavior
-        Strategy
-        Technology and Operations Management
-        -->
-
-      </div> <!-- .row -->
-
-    </div> <!--.content $data-section-content -->
-  </section>
-</div> <!-- #faculty_table -->
-
-
-<section id="book_list" >
   <div class="row">
     <div class="small-12 columns">
-      <h2>Books by Joseph Badaracco</h2>
+      <img id="book-list-hoz-1" class="list-horizontal" src="./img/book-stack-horizontal-investment-blue.png" alt="demo book list" />
     </div>
-    <div class="large-12 columns">
-      <!-- TODO: StackView widget goes here -->
-      <div class="large-6 small-12 columns">
-        <div id="book-stack"> </div>
-      </div>
-      <div id="book-related" class="large-6 small-12 columns panel book-related-infobox">
-        <div class="small-12 columns book-title">
-          <h5> Questions of Character: Illuminating the Heart of Leadership Through Literature</h5>
-        </div>
-        <div class="small-4 columns">
-          <img alt="Example Author Headshot" src="http://placehold.it/140/148"/>
-        </div>
-        <div class="small-8 columns">
-          <ul class="vcard">
-            <li class="fn">Joseph L. Badaracco</li>
-            <li class="title">John Shad Professor of Business Ethics</li>
-          </ul>
-        </div>
-        <div class="small-12 columns panel">
-          <p class="bio">
-            Joseph L. Badaracco is the John Shad Professor of Business Ethics at Harvard Business School. He has taught courses on business ethics, strategy, and management in the School's MBA and executive programs. <a href="#">read more...</a>
-          </p>
-        </div>
 
-        <div class="small-12 columns">
+    <div class="small-12 columns">
+      <h2 class="book-list-title">Books by <span class="faculty-name">Joseph Badaracco</span></h2>
+    </div>
+  </div> <!-- .row -->
 
-          <hgroup>
-            <h2>02a. Related books by LCSH subject</h2>
-            <h5 class="subheader">LCSH Subject: HD57.7</h5>
-            <h5 class="subheader">Leadership--Moral and ethical aspects</h5>
-          </hgroup>
+  <div class="row">
+    <div class="small-12 columns">
+      <img id="book-list-hoz-1" class="list-horizontal" src="./img/book-stack-horizontal-investment-blue.png" alt="demo book list" />
+    </div>
 
-          <div id="related-stack"> </div>
+    <div class="small-12 columns">
+      <h2 class="book-list-title">Related books from HBS Faculty</h2>
+    </div>
+  </div> <!-- .row -->
 
-          <h2>02b. Related books by other HBS authors</h2>
-          <div id="related-hbs-stack"> </div>
+  <div class="row">
 
-        </div> <!--small-12 columns-->
-      </div>
-    </div> <!--.large-12 columns-->
-  </div>
+    <div class="small-12 columns">
+      <img id="book-list-hoz-1" class="list-horizontal" src="./img/book-stack-horizontal-investment-blue.png" alt="demo book list" />
+    </div>
+
+    <div class="small-12 columns">
+      <h2 class="book-list-title">Related books in the Harvard Library</h2>
+    </div>
+  </div> <!-- .row -->
+
+  <div class="row">
+
+    <div class="small-6 columns">
+      <h5 class="subheader">LCSH Subject: HD57.7</h5>
+      <h5 class="subheader">Leadership--Moral and ethical aspects</h5>
+      <div id="book-stack0"> </div>
+    </div>
+
+    <div class="small-6 columns">
+      <h5 class="subheader">LCSH Subject: VA12</h5>
+      <h5 class="subheader">Naval Preparations--United States</h5>
+      <div id="book-stack1"> </div>
+    </div>
+
+  </div> <!-- .row -->
 </section> <!-- #book_list -->
 
 
@@ -386,7 +166,7 @@
   '.js><\/script>')
   </script>
 
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+  <script src="js/vendor/jquery.min.js"></script>
   <script src="js/foundation.min.js"></script>
   <script src="js/foundation/foundation.section.js"></script>
   <!-- minified stackview -->
@@ -394,6 +174,8 @@
 
   <!-- d3js -->
   <script src="http://d3js.org/d3.v3.min.js"></script>
+  <!-- colorbrewer -->
+  <script src="js/vendor/colorbrewer.v1.min.js"></script>
   <!-- render the faculty vis -->
   <script src="js/faculty_render.js"></script>
 
@@ -572,7 +354,15 @@
       ]
       };
 
-      $('#book-stack').stackView({
+      $('#book-stack0').stackView({
+          data: data,
+          ribbon: "Badaracco, Joseph L., Jr."
+          });
+      $('#book-stack1').stackView({
+          data: data,
+          ribbon: "Badaracco, Joseph L., Jr."
+          });
+      $('#book-stack2').stackView({
           data: data,
           ribbon: "Badaracco, Joseph L., Jr."
           });
