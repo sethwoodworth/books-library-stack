@@ -176,3 +176,144 @@ function zoom(d, i) {
   node = d;
   d3.event.stopPropagation();
 }
+
+var data =
+{"start": "-1", "limit": "0", "num_found": "2", "docs":
+[
+  {
+      "title": "Blankets",
+      "creator": [
+          "Craig Thompson"
+      ],
+      "measurement_page_numeric": 582,
+      "measurement_height_numeric": 25,
+      "shelfrank": 13,
+      "pub_date": "2003",
+      "link": "http://holliscatalog.harvard.edu/?itemid=|library/m/aleph|009189638"
+  },
+  {
+      "title": "Persepolis",
+      "creator": [
+          "Marjane Satrapi"
+      ],
+      "measurement_page_numeric": 153,
+      "measurement_height_numeric": 24,
+      "shelfrank": 64,
+      "pub_date": "2003",
+      "link": "http://holliscatalog.harvard.edu/?itemid=|library/m/aleph|009098946"
+  },
+  {
+      "title": "Blankets",
+      "creator": [
+          "Craig Thompson"
+      ],
+      "measurement_page_numeric": 582,
+      "measurement_height_numeric": 25,
+      "shelfrank": 13,
+      "pub_date": "2003",
+      "link": "http://holliscatalog.harvard.edu/?itemid=|library/m/aleph|009189638"
+  },
+  {
+      "title": "Persepolis",
+      "creator": [
+          "Marjane Satrapi"
+      ],
+      "measurement_page_numeric": 153,
+      "measurement_height_numeric": 24,
+      "shelfrank": 64,
+      "pub_date": "2003",
+      "link": "http://holliscatalog.harvard.edu/?itemid=|library/m/aleph|009098946"
+  },
+  {
+      "title": "Blankets",
+      "creator": [
+          "Craig Thompson"
+      ],
+      "measurement_page_numeric": 582,
+      "measurement_height_numeric": 25,
+      "shelfrank": 13,
+      "pub_date": "2003",
+      "link": "http://holliscatalog.harvard.edu/?itemid=|library/m/aleph|009189638"
+  },
+  {
+      "title": "Persepolis",
+      "creator": [
+          "Marjane Satrapi"
+      ],
+      "measurement_page_numeric": 153,
+      "measurement_height_numeric": 24,
+      "shelfrank": 64,
+      "pub_date": "2003",
+      "link": "http://holliscatalog.harvard.edu/?itemid=|library/m/aleph|009098946"
+  },
+  {
+      "title": "Blankets",
+      "creator": [
+          "Craig Thompson"
+      ],
+      "measurement_page_numeric": 582,
+      "measurement_height_numeric": 25,
+      "shelfrank": 13,
+      "pub_date": "2003",
+      "link": "http://holliscatalog.harvard.edu/?itemid=|library/m/aleph|009189638"
+  },
+  {
+      "title": "Persepolis",
+      "creator": [
+          "Marjane Satrapi"
+      ],
+      "measurement_page_numeric": 153,
+      "measurement_height_numeric": 24,
+      "shelfrank": 64,
+      "pub_date": "2003",
+      "link": "http://holliscatalog.harvard.edu/?itemid=|library/m/aleph|009098946"
+  },
+  {
+      "title": "Blankets",
+      "creator": [
+          "Craig Thompson"
+      ],
+      "measurement_page_numeric": 582,
+      "measurement_height_numeric": 25,
+      "shelfrank": 13,
+      "pub_date": "2003",
+      "link": "http://holliscatalog.harvard.edu/?itemid=|library/m/aleph|009189638"
+  },
+  {
+      "title": "Persepolis",
+      "creator": [
+          "Marjane Satrapi"
+      ],
+      "measurement_page_numeric": 153,
+      "measurement_height_numeric": 24,
+      "shelfrank": 64,
+      "pub_date": "2003",
+      "link": "http://holliscatalog.harvard.edu/?itemid=|library/m/aleph|009098946"
+  },
+  {
+      "title": "Blankets",
+      "creator": [
+          "Craig Thompson"
+      ],
+      "measurement_page_numeric": 582,
+      "measurement_height_numeric": 25,
+      "shelfrank": 13,
+      "pub_date": "2003",
+      "link": "http://holliscatalog.harvard.edu/?itemid=|library/m/aleph|009189638"
+  },
+  {
+      "title": "Persepolis",
+      "creator": [
+          "Marjane Satrapi"
+      ],
+      "measurement_page_numeric": 153,
+      "measurement_height_numeric": 24,
+      "shelfrank": 64,
+      "pub_date": "2003",
+      "link": "http://holliscatalog.harvard.edu/?itemid=|library/m/aleph|009098946"
+  }
+]
+};
+
+// load a horizontal stackview on page load
+$('#horizontal-demo').stackView({data: data, horizontal: true});
