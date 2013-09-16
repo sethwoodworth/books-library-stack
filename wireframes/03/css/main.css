@@ -1,0 +1,112 @@
+header {
+  border: 1px solid #b6b6b6;
+  height: 8em;
+  text-transform: uppercase;
+}
+.panel.black {
+  background-color: black;
+  border-color: black;
+}
+.panel.black h1 {
+  color: white;
+  text-align: center;
+}
+footer {
+  background-color: #b6b6b6;
+  height: 70px;
+  color: white;
+}
+
+/* Sections */
+section.vis {
+  position: relative; // allow for absolute internals
+}
+
+/* Visualization */
+.faculty-by-unit {
+  /*position:absolute;*/
+}
+
+/* Information box to the right of the visaualization */
+.info-box {
+  position:absolute;
+  top: 1em;
+  right: 1em;
+}
+
+/* index style */
+/* END index style */
+
+#book-stack {
+  /* override jquery.stackview.css book view height */
+  height: auto
+}
+.book-related-infobox {
+  /*border: 1px solid #eee;*/
+  min-height: 600px;
+}
+
+.book-list-title {
+  text-align: right;
+}
+
+ul.stack-items,
+.stackview {
+  min-height: 700px;
+}
+
+.asdfasdflist-horizontal {
+  -webkit-transform: rotate(90deg);
+  -moz-transform: rotate(90deg);
+  -o-transform: rotate(90deg);
+  transform: rotate(90deg);
+}
+
+/* Override orientation and position */
+#related-hbs-stack .stack-items,
+#related-stack .stack-items {
+  -webkit-transform: rotate(-90deg);
+  -moz-transform: rotate(-90deg);
+  -o-transform: rotate(-90deg);
+  transform: rotate(-90deg);
+}
+#related-hbs-stack .stack-item,
+#related-stack .stack-item {
+  webkittransform: rotate(180deg);
+  moztransform: rotate(180deg);
+  otransform: rotate(180deg);
+  transform: rotate(180deg);
+}
+
+#related-hbs-stack > ul.stack-items > li.stack-book.heat1 > a,
+#related-hbs-stack > ul.stack-items > li.stack-book.heat1 > a:visited,
+#related-stack > ul.stack-items > li.stack-book.heat1 > a,
+#related-stack > ul.stack-items > li.stack-book.heat1 > a:visited {
+  background-color: lightgray;
+}
+
+
+#related-hbs-stack .stack-navigation,
+#related-hbs-stack .ribbon,
+#related-hbs-stack .stack-items:after,
+#related-hbs-stack .spine-year,
+#related-stack .stack-navigation,
+#related-stack .ribbon,
+#related-stack .stack-items:after,
+#related-stack .spine-year {
+  display: none;
+}
+
+/* vis panel */
+body.demo1 section.vis {
+  background-color: #e22847;
+}
+
+/* vis side panel styles  */
+.side-panel h3{
+  
+}
+
+.side-panel li {
+  cursor: pointer;
+}
