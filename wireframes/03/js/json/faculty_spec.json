@@ -1,0 +1,12 @@
+{
+"name": "Harvard Business School",
+"children": [
+{
+ "name": "Accounting and Management",
+ "children": [
+      { "name": "Professor X",
+        "interests": ["foo", "bar", "baf"],
+        "size": 1},
+
+  ]
+},
