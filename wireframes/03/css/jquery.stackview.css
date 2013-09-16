@@ -1,8 +1,8 @@
 /*
-	Stack View - The jQuery virtual stack plugin
-	by The Harvard Library Innovation Lab
-	
-	Dual licensed under MIT and GPL.
+    Stack View - The jQuery virtual stack plugin
+    by The Harvard Library Innovation Lab
+
+    Dual licensed under MIT and GPL.
 */
 .stackview {
   font-family: "Helvetica Neue", sans-serif;
@@ -27,7 +27,7 @@
   -webkit-overflow-scrolling: touch;
 }
 .stack-items:before {
-  background: url("../img/bookEnd-prev.png");
+  background: url("images/bookEnd-prev.png");
   content: "";
   display: block;
   width: 212px;
@@ -40,13 +40,13 @@
   display: block;
   width: 212px;
   height: 114px;
-  background: url("../img/bookEnd-next.png");
+  background: url("images/bookEnd-next.png");
   margin: -7px 0 0 0;
 }
 
 .stackview-placeholder {
   width: 250px;
-  background: url("../img/placeholder.gif") no-repeat center center #ccccdd;
+  background: url("images/placeholder.gif") no-repeat center center #ccccdd;
   border: 1px solid #bbb;
   border-radius: 3px;
   height: 40px;
@@ -65,10 +65,10 @@
   height: 100%;
   color: #fff;
   white-space: nowrap;
-  background: url("../img/gloss.png") repeat-x 0 47%;
+  background: url("images/gloss.png") repeat-x 0 47%;
 }
 .stack-item > a:hover, .stack-item > a:focus {
-  background-image: url("../img/highGloss.png");
+  background-image: url("images/highGloss.png");
   text-decoration: none;
 }
 .stack-item > a:visited, .stack-item > a:hover, .stack-item > a:active {
@@ -142,7 +142,7 @@
   position: absolute;
   bottom: -10px;
   left: 0;
-  background: url("../img/ribbonTab.png") no-repeat 0 0;
+  background: url("images/ribbonTab.png") no-repeat 0 0;
   width: 10px;
   height: 10px;
 }
@@ -155,7 +155,7 @@
 *******************/
 .heat1 a {
   background-color: #ccebff;
-  background-image: url("../img/superGloss.png");
+  background-image: url("images/superGloss.png");
   color: #222;
   text-shadow: 0 1px 0 #fff;
   border-color: #aaddff;
@@ -196,7 +196,7 @@
 
 .heat2 a {
   background-color: #aaddff;
-  background-image: url("../img/superGloss.png");
+  background-image: url("images/superGloss.png");
   color: #222;
   text-shadow: 0 1px 0 #ddf1ff;
   border-color: #88cfff;
@@ -237,7 +237,7 @@
 
 .heat3 a {
   background-color: #77c9ff;
-  background-image: url("../img/highGloss.png");
+  background-image: url("images/highGloss.png");
   color: #111;
   text-shadow: 0 1px 0 #adf;
   border-color: #59b6ef;
@@ -494,7 +494,7 @@
 
 .heat10 a {
   background-color: #004777;
-  text-shadow: 0 -1px 0 #003355;
+  text-shadow: 0 -1px 0 #035;
   border-color: #001522;
 }
 .heat10 .stack-pages {
@@ -544,7 +544,7 @@
   overflow: hidden;
 }
 .stack-navigation .upstream {
-  background: url("../img/nav.png") 0 -87px no-repeat;
+  background: url("images/nav.png") 0 -87px no-repeat;
 }
 .stack-navigation .upstream:hover, .stack-navigation .upstream:focus {
   background-position: 0 -44px;
@@ -553,7 +553,7 @@
   background-position: 0 -1px;
 }
 .stack-navigation .downstream {
-  background: url("../img/nav.png") 0 -130px no-repeat;
+  background: url("images/nav.png") 0 -130px no-repeat;
 }
 .stack-navigation .downstream:hover, .stack-navigation .downstream:focus {
   background-position: 0 -173px;
@@ -579,7 +579,7 @@
 .stack-book > a {
   border-width: 1px 2px;
   border-style: solid;
-  border-radius: 3px/20px;
+  border-radius: 3px / 20px;
 }
 .stack-book .spine-text {
   height: 40px;
@@ -607,7 +607,7 @@
   bottom: -4px;
   border-width: 3px 0 3px 2px;
   border-style: solid;
-  border-radius: 4px 0 0 4px/20px 0 0 20px;
+  border-radius: 4px 0 0 4px / 20px 0 0 20px;
   -o-transform-origin: 0 100%;
   -ms-transform-origin: 0 100%;
   -moz-transform-origin: 0 100%;
@@ -627,7 +627,7 @@
   top: 0;
   bottom: 0;
   background: #f5f2e8;
-  border-radius: 3px 0 0 3px/20px 0 0 20px;
+  border-radius: 3px 0 0 3px / 20px 0 0 20px;
   border-width: 2px 1px 2px 0px;
   border-style: solid;
   border-color: #aaa #e5e5e5 #007acc #ddd;
@@ -665,7 +665,7 @@
   border-radius: 3px 0 0 3px;
 }
 .stack-serial > a, .stack-serial > a:hover, .stack-serial > a:focus {
-  background-image: url(../img/serials.png);
+  background-image: url(images/serials.png);
 }
 .stack-serial .spine-text {
   left: 15px;
@@ -685,7 +685,7 @@
   bottom: 0;
   width: 17px;
   height: 38px;
-  background: url(../img/serials-edge.png) 0 0 no-repeat;
+  background: url(images/serials-edge.png) 0 0 no-repeat;
   border-width: 2px 0;
   -o-transform-origin: 0 100%;
   -ms-transform-origin: 0 100%;
@@ -725,7 +725,7 @@
   margin: 0 0 1px 0;
 }
 .stack-soundrecording:before {
-  content: url("../img/icon-note.png");
+  content: url("images/icon-note.png");
   position: absolute;
   left: 10px;
   top: 4px;
@@ -935,7 +935,7 @@
   text-overflow: ellipsis;
 }
 .url-bar:before {
-  content: url("../img/icon-globe.png");
+  content: url("images/icon-globe.png");
   vertical-align: middle;
   position: relative;
   top: 1px;
@@ -1018,6 +1018,171 @@
   margin-top: -4px;
 }
 .stackview-mini .ribbon {
+  top: 20px;
+  padding: 4px 5px 4px 14px;
+  min-height: 20px;
+  font-size: 16px;
+}
+
+.stackview-horizontal .stack-horizontal {
+  width: 100%;
+}
+.stackview-horizontal .stack-items {
+  /* The UL tag that contains books.
+   * This element is also what creates the bookends 
+   * as before & after
+   */
+}
+.stackview-horizontal .stack-items:before, .stackview-horizontal .stack-items:after {
+  content: '';
+  height: 0;
+  width: 0;
+  display: none;
+}
+.stackview-horizontal .stack-book {
+  margin: 0 2px 0 0;
+  position: relative;
+  display: inline-block;
+  height: 400px;
+  width: 100px;
+  /*background-color: blue;*/
+  /*border: 4px solid black;*/
+}
+.stackview-horizontal .stack-book > a {
+  border-width: 2px 1px;
+  border-radius: 20px / 5px;
+  /* non-rotated was 3px / 20px */
+}
+.stackview-horizontal .book-horizontal {
+  position: relative;
+  display: inline-block;
+  margin-top: 80px;
+  /* allow for room for the book pages on top */
+  /* These are temporary styles that we're going to use to debug parts of the interface*/
+  /*border: 4px solid black;*/
+  height: 400px;
+  width: 100px;
+}
+.stackview-horizontal .book-horizontal > a {
+  display: block;
+  text-decoration: none;
+  width: 100%;
+  height: 100%;
+  color: #fff;
+  white-space: nowrap;
+}
+.stackview-horizontal .spine-text {
+  width: 100%;
+  height: 100%;
+  top: 10px;
+  left: auto;
+  right: auto;
+  position: relative;
+}
+.stackview-horizontal .spine-title {
+  position: absolute;
+  font-size: 24px;
+  left: 50%;
+  -webkit-transform: rotate(90deg);
+  -moz-transform: rotate(90deg);
+  -o-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  transform: rotate(90deg);
+  -o-transform-origin: left;
+  -ms-transform-origin: left;
+  -moz-transform-origin: left;
+  -webkit-transform-origin: left;
+  transform-origin: left;
+}
+.stackview-horizontal .spine-author {
+  position: absolute;
+  bottom: 29%;
+  left: 50%;
+  -webkit-transform: rotate(90deg);
+  -moz-transform: rotate(90deg);
+  -o-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  transform: rotate(90deg);
+  -o-transform-origin: left;
+  -ms-transform-origin: left;
+  -moz-transform-origin: left;
+  -webkit-transform-origin: left;
+  transform-origin: left;
+}
+.stackview-horizontal .spine-year {
+  font-size: 8px;
+  padding: 0;
+  line-height: 12px;
+  height: 12px;
+  margin-top: -6px;
+  width: 24px;
+  top: auto;
+  left: calc(50% - 12px);
+  right: auto;
+  bottom: 3px;
+  -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  -o-transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  transform: rotate(0deg);
+}
+.stackview-horizontal .stack-pages {
+  width: 100%;
+  height: 30px;
+  top: -26px;
+  left: 12px;
+  border-width: 0 3px 2px 3px;
+  border-radius: 0 0 15px 15px/0 0 4px 4px;
+  /*border-color: lightgray;*/
+  /*background-color: goldenrod;*/
+  -o-transform-origin: 100% 0;
+  -ms-transform-origin: 100% 0;
+  -moz-transform-origin: 100% 0;
+  -webkit-transform-origin: 100% 0;
+  transform-origin: 100% 0;
+  -webkit-transform: skew(-24deg, 0deg);
+  -moz-transform: skew(-24deg, 0deg);
+  -o-transform: skew(-24deg, 0deg);
+  -ms-transform: skew(-24deg, 0deg);
+  transform: skew(-24deg, 0deg);
+}
+.stackview-horizontal .stack-pages:after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  background: #f5f2e8;
+  border-radius: 0 0 15px 15px  / 0 0 3px 3px;
+  border-width: 1px 2px 0px 2px;
+  border-style: solid;
+  border-color: #e5e5e5 #007acc #ddd #aaa;
+}
+.stackview-horizontal .stack-cover {
+  position: absolute;
+  top: 0;
+  right: -15px;
+  left: auto;
+  /*override*/
+  z-index: 4;
+  width: 11px;
+  height: 100%;
+  border-style: solid;
+  border-width: 1px;
+  border-top-width: 5px;
+  border-radius: 0 0 4px 50px;
+  -o-transform-origin: left bottom;
+  -ms-transform-origin: left bottom;
+  -moz-transform-origin: left bottom;
+  -webkit-transform-origin: left bottom;
+  transform-origin: left bottom;
+  -webkit-transform: skew(0deg, -65deg);
+  -moz-transform: skew(0deg, -65deg);
+  -o-transform: skew(0deg, -65deg);
+  -ms-transform: skew(0deg, -65deg);
+  transform: skew(0deg, -65deg);
+}
+.stackview-horizontal .ribbon {
   top: 20px;
   padding: 4px 5px 4px 14px;
   min-height: 20px;
