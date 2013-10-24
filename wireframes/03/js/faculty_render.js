@@ -44,14 +44,14 @@ var pack = d3.layout.pack()
           .attr("cy", function(d) { return d.y; })
           .style("fill", function(d) {
             if (d.name === 'Harvard Business School') {
-              return 'ebe3d6'
+              return '#ebe3d6'
             }
             if (!d.children) {
               //return '0bcce1'
               return color(d.name);
             }
             // When a unit
-            return 'ff4160'
+            return '#ff4160'
             //return u_color(d.name);
             })
           .on("click", zoom)
