@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<!--[if IE 8]> 				 <html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<!--[if IE 8]>          <html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!-->  <html class="no-js" lang="en" > <!--<![endif]-->
 
 <head>
-	<meta charset="utf-8" />
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width" />
   <title>HBS+HOLLIS PROJECT WIREFRAMES v02</title>
 
@@ -87,8 +87,8 @@
 
   <div class="row">
     <div class="small-12 columns">
-      <img id="book-list-hoz-1" class="list-horizontal" src="./img/book-stack-horizontal-investment-blue.png" alt="demo book list" />
-      <div id='horizontal-demo'></div>
+      <!--<img id="book-list-hoz-1" class="list-horizontal" src="./img/book-stack-horizontal-investment-blue.png" alt="demo book list" />-->
+       <div id='book-stack0'></div>
 
     </div>
 
@@ -156,8 +156,10 @@
   <script src="http://d3js.org/d3.v3.min.js"></script>
   <!-- colorbrewer -->
   <script src="js/vendor/colorbrewer.v1.min.js"></script>
-  <!-- render the faculty vis -->
+  <!-- main js import -->
   <script src="js/faculty_render.js"></script>
+  <!-- render the faculty vis -->
+  <script src="js/main.js"></script>
 
   <!--
   <script src="js/foundation/foundation.js"></script>
@@ -175,189 +177,6 @@
   <script src="js/foundation/foundation.topbar.js"></script>
   <script src="js/foundation/foundation.interchange.js"></script>
   -->
-  <script>
-    $(document).foundation();
-
-    $(function () {
-      var data =
-      {"start": "-1", "limit": "0", "num_found": "8", "docs":
-      [
-        {
-            "title": "Questions of Character: Illuminating the Heart of Leadership Through Literature.",
-            "creator": [
-                "Badaracco, Joseph L., Jr."
-            ],
-            "measurement_page_numeric": 221,
-            "measurement_height_numeric": 25,
-            "shelfrank": 92,
-            "pub_date": "2006",
-            "link": "http://holliscatalog.harvard.edu/?itemid=|library/m/aleph|009189638"
-        },
-        {
-            "title": "Leading Quietly: An Unorthodox Guide to Doing the Right Thing",
-            "creator": [
-                "Badaracco, Joseph L., Jr."
-            ],
-            "measurement_page_numeric": 382,
-            "measurement_height_numeric": 25,
-            "shelfrank": 57,
-            "pub_date": "2002",
-            "link": "http://holliscatalog.harvard.edu/?itemid=|library/m/aleph|009189638"
-        },
-        {
-            "title": "Defining Moments: When Managers Must Choose between Right and Right",
-            "creator": [
-                "Badaracco, Joseph L., Jr."
-            ],
-            "measurement_page_numeric": 582,
-            "measurement_height_numeric": 30,
-            "shelfrank": 12,
-            "pub_date": "1997",
-            "link": "http://holliscatalog.harvard.edu/?itemid=|library/m/aleph|009189638"
-        },
-        {
-            "title": "Business Ethics: Roles and Responsibilities.",
-            "creator": [
-                "Badaracco, Joseph L., Jr."
-            ],
-            "measurement_page_numeric": 582,
-            "measurement_height_numeric": 35,
-            "shelfrank": 42,
-            "pub_date": "1994",
-            "link": "http://holliscatalog.harvard.edu/?itemid=|library/m/aleph|009189638"
-        },
-        {
-            "title": "The Knowledge Link",
-            "creator": [
-                "Badaracco, Joseph L., Jr."
-            ],
-            "measurement_page_numeric": 582,
-            "measurement_height_numeric": 35,
-            "shelfrank": 49,
-            "pub_date": "1991",
-            "link": "http://holliscatalog.harvard.edu/?itemid=|library/m/aleph|009189638"
-        }
-      ]
-      };
-
-      var horizontal_data =
-      {"start": "-1", "limit": "0", "num_found": "3", "docs":
-      [
-        {
-            "title": "Defining Moments: When Managers Must Choose between Right and Right",
-            "creator": [
-                "Badaracco, Joseph L., Jr."
-            ],
-            "measurement_page_numeric": 150,
-            "measurement_height_numeric": 30,
-            "shelfrank": 1,
-            "pub_date": "1997",
-            "link": "http://holliscatalog.harvard.edu/?itemid=|library/m/aleph|009189638"
-        },
-        {
-            "title": "Business Ethics: Roles and Responsibilities.",
-            "creator": [
-                "Badaracco, Joseph L., Jr."
-            ],
-            "measurement_page_numeric": 150,
-            "measurement_height_numeric": 35,
-            "shelfrank": 1,
-            "pub_date": "1994",
-            "link": "http://holliscatalog.harvard.edu/?itemid=|library/m/aleph|009189638"
-        },
-        {
-            "title": "Business Ethics: Roles and Responsibilities.",
-            "creator": [
-                "Badaracco, Joseph L., Jr."
-            ],
-            "measurement_page_numeric": 150,
-            "measurement_height_numeric": 35,
-            "shelfrank": 1,
-            "pub_date": "1994",
-            "link": "http://holliscatalog.harvard.edu/?itemid=|library/m/aleph|009189638"
-        },
-        {
-            "title": "Business Ethics: Roles and Responsibilities.",
-            "creator": [
-                "Badaracco, Joseph L., Jr."
-            ],
-            "measurement_page_numeric": 150,
-            "measurement_height_numeric": 35,
-            "shelfrank": 1,
-            "pub_date": "1994",
-            "link": "http://holliscatalog.harvard.edu/?itemid=|library/m/aleph|009189638"
-        },
-        {
-            "title": "Business Ethics: Roles and Responsibilities.",
-            "creator": [
-                "Badaracco, Joseph L., Jr."
-            ],
-            "measurement_page_numeric": 150,
-            "measurement_height_numeric": 35,
-            "shelfrank": 1,
-            "pub_date": "1994",
-            "link": "http://holliscatalog.harvard.edu/?itemid=|library/m/aleph|009189638"
-        },
-        {
-            "title": "Business Ethics: Roles and Responsibilities.",
-            "creator": [
-                "Badaracco, Joseph L., Jr."
-            ],
-            "measurement_page_numeric": 150,
-            "measurement_height_numeric": 35,
-            "shelfrank": 1,
-            "pub_date": "1994",
-            "link": "http://holliscatalog.harvard.edu/?itemid=|library/m/aleph|009189638"
-        },
-        {
-            "title": "Business Ethics: Roles and Responsibilities.",
-            "creator": [
-                "Badaracco, Joseph L., Jr."
-            ],
-            "measurement_page_numeric": 150,
-            "measurement_height_numeric": 35,
-            "shelfrank": 1,
-            "pub_date": "1994",
-            "link": "http://holliscatalog.harvard.edu/?itemid=|library/m/aleph|009189638"
-        },
-        {
-            "title": "The Knowledge Link",
-            "creator": [
-                "Badaracco, Joseph L., Jr."
-            ],
-            "measurement_page_numeric": 150,
-            "measurement_height_numeric": 35,
-            "shelfrank": 1,
-            "pub_date": "1991",
-            "link": "http://holliscatalog.harvard.edu/?itemid=|library/m/aleph|009189638"
-        }
-      ]
-      };
-
-      $('#book-stack0').stackView({
-          data: data,
-          ribbon: "Badaracco, Joseph L., Jr."
-          });
-      $('#book-stack1').stackView({
-          data: data,
-          ribbon: "Badaracco, Joseph L., Jr."
-          });
-      $('#book-stack2').stackView({
-          data: data,
-          ribbon: "Badaracco, Joseph L., Jr."
-          });
-      $('#related-stack').stackView({
-          data: horizontal_data
-          });
-      $('#related-hbs-stack').stackView({
-          data: horizontal_data
-          });
-    });
-
-
-
-
-  </script>
 
 </body>
 </html>
