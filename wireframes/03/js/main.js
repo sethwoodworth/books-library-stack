@@ -1,4 +1,3 @@
-  <script>
     $(document).foundation();
 
     $(function () {
@@ -178,7 +177,3 @@
           });
     });
 
-
-
-
-  </script>
