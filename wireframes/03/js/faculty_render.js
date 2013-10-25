@@ -22,9 +22,12 @@ var pack = d3.layout.pack()
   var svg = d3.select(".faculty-by-unit").append("svg")
       .attr("width", '100%')
       .attr("height", h)
-    .append("g");
+    .append("g")
+      .call(d3.behavior.zoom().scaleExtent([1, 8]).on("zoom", d3zoom))
+    .append("g")
       //.attr("transform", "translate(2,2)");
-      //.attr("transform", "translate(" + (w - r) / 2 + "," + (h - r) / 2 + ")");
+      //.attr("transform", "translate(" + (w - r) / 2 + "," + (h - r) / 2 + ")")
+;
 
 
   d3.json("d3_hbs/hbs_units.json", function(error, root) {
@@ -56,7 +59,7 @@ var pack = d3.layout.pack()
             return '#ff4160'
             //return u_color(d.name);
             })
-          .on("click", zoom)
+          //.on("click", zoom)
     ;
     //
     // Add Text elements for every faculty
@@ -65,16 +68,18 @@ var pack = d3.layout.pack()
       .enter()
         .append("svg:text")
         // Only position and style nodes
-        //.attr("x", function(d) { return d.x; })
-        //.attr("y", function(d) { return d.y; })
+        .attr("x", function(d) { return d.x; })
+        .attr("y", function(d) { return d.y; })
+        // scale font sizes exponentially and inversely to their depth
+        .attr("font-size", function (d) { return 25/Math.pow(4, d.depth); })
         .attr("text-anchor", "middle")
         //.style("opacity", function(d) { return d.r > 200; })
         // TODO set opaci
         // Returns Faculty.name if there are no children (unit)
-        .text(function(d) { return !d.children ? d.name : "" ; })
+        .text(function(d) { return d.name; })
         // Make hidden texts invisibile until needed
-        .style("opacity", function(d) { return 0; })
-        .on("click", zoom)
+        //.style("opacity", function(d) { return 0; })
+        //.on("click", zoom)
     ;
         //.attr("dy", ".35em")
 
@@ -86,7 +91,7 @@ var pack = d3.layout.pack()
                 //.filter(function(d, i) { return i ;})
                 .append("li")
                 .text(function(d) { return d.name;  })
-                .on("click", zoom)
+                //.on("click", zoom)
 
     ;
 
@@ -108,6 +113,10 @@ var pack = d3.layout.pack()
 
 
   });
+
+function d3zoom() {
+  svg.attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")");
+}
 
 /*  for the clicked
  */
@@ -161,7 +170,7 @@ function zoom(d, i) {
   t.selectAll("text")
       .attr("x", function(d) { return x(d.x); })
       .attr("y", function(d) { return y(d.y); })
-      .style("opacity", function(d) { return k * d.r > 50 ? 1 : 0; })
+      //.style("opacity", function(d) { return k * d.r > 50 ? 1 : 0; })
       //.style("opacity", 0)
   ;
       //.style("opacity", function(d) { return k * d.r > 20 ? 1 : 0; });
