@@ -43,14 +43,16 @@ var pack = d3.layout.pack()
           .attr("cx", function(d) { return d.x; })
           .attr("cy", function(d) { return d.y; })
           .style("fill", function(d) {
-            if (d.name === 'Harvard Business School') {
-              return '#ebe3d6'
+            // root node: HBS
+            if (!d.parent) {
+              return '#ebe3d6';
             }
+            // leaf nodes: Faculty
             if (!d.children) {
               //return '0bcce1'
               return color(d.name);
             }
-            // When a unit
+            // When a unit or interest
             return '#ff4160'
             //return u_color(d.name);
             })
