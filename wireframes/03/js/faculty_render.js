@@ -122,6 +122,7 @@ d3.json("d3_hbs/hbs_units.json", function(error, root) {
             objarray[i].text = textarray[i];
             objarray[i].x = d.x;
             objarray[i].y = d.y;
+            objarray[i].i = i;
           }
           // return each line of the text array
           return objarray;
@@ -129,7 +130,8 @@ d3.json("d3_hbs/hbs_units.json", function(error, root) {
           // Returns label for the bubble, with some line wrapping formatted into tspans
           .enter().append('svg:tspan')
              .attr("x", function (d) { return d.x; })
-             .attr("dy", "1em")
+             // 1em under the previous cursor unless it is the first line
+             .attr("dy", function (d) { return (d.i == 0) ? "0em" : "1em"; })
              .text(function(d) { return d.text; } )
     ;
 
