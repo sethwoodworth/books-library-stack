@@ -23,14 +23,50 @@ var pack = d3.layout.pack()
       .attr("width", '100%')
       .attr("height", h)
     .append("g")
-      .call(d3.behavior.zoom().scaleExtent([1, 8]).on("zoom", d3zoom))
+      .call(d3.behavior.zoom().on("zoom", function () {
+        var t = svg.transition().duration( 750 );
+        t.selectAll("text").style("visibility", function (d) { return text_visibility(d, d3.event.scale) });
+        svg.attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")");
+      }))
+
     .append("g")
       //.attr("transform", "translate(2,2)");
       //.attr("transform", "translate(" + (w - r) / 2 + "," + (h - r) / 2 + ")")
 ;
 
+function text_visibility(d, zoom_level) {
+    // define some zoom_level boundaries.
+    var school_collection_bounds = 1.5;
+    var collection_individual_bounds = 2.5;
+    // fuzz between boundaries to show more than one layer of bubble labels if desired.
+    // fuzz = 0 means only one layer of bubbles may show labels at any moment.
+    var fuzz = 0.0;
 
-  d3.json("d3_hbs/hbs_units.json", function(error, root) {
+    switch (d.depth) {
+        case 0:
+            // what zoom levels to show the biggest, outer bubble's label
+            if (zoom_level < (school_collection_bounds + fuzz)) return 'visible';
+            else return 'hidden';
+        case 1:
+            // what zoom levels to show the inner, secondary collection bubbles' labels
+            if ((zoom_level >= (school_collection_bounds - fuzz)) &&
+                (zoom_level < (collection_individual_bounds + fuzz))) return 'visible';
+            else return 'hidden';
+        case 2:
+            // what zoom levels to show the smallest, inner bubble's label
+            if (zoom_level >= (collection_individual_bounds - fuzz)) return 'visible';
+            else return 'hidden';
+    }
+}
+
+// font_size setter for depths 0, 1, and 2.
+var font_sizes = Object();
+font_sizes[0] = 48;
+font_sizes[1] = 10;
+font_sizes[2] = 2;
+
+
+d3.json("d3_hbs/hbs_units.json", function(error, root) {
     // Create a heirarchical circle packing layout
     var nodes = pack.nodes(root);
 
@@ -63,25 +99,39 @@ var pack = d3.layout.pack()
     ;
     //
     // Add Text elements for every faculty
-    svg.selectAll("text")
-        .data(nodes)
-      .enter()
-        .append("svg:text")
+    var svgtext = svg.selectAll("text")
+      .data(nodes)
+        .enter().append("svg:text")
         // Only position and style nodes
         .attr("x", function(d) { return d.x; })
         .attr("y", function(d) { return d.y; })
-        // scale font sizes exponentially and inversely to their depth
-        .attr("font-size", function (d) { return 25/Math.pow(4, d.depth); })
+        .attr("font-size", function (d) { return font_sizes[d.depth]; })
         .attr("text-anchor", "middle")
-        //.style("opacity", function(d) { return d.r > 200; })
-        // TODO set opaci
-        // Returns Faculty.name if there are no children (unit)
-        .text(function(d) { return d.name; })
-        // Make hidden texts invisibile until needed
-        //.style("opacity", function(d) { return 0; })
-        //.on("click", zoom)
+        // Show relevant text for initial zoom (initial zoom level is 1)
+        .style("visibility", function (d) { return text_visibility(d, 1) })
     ;
-        //.attr("dy", ".35em")
+
+    // Add word wrapped Tspan elements for every Text element above
+    svgtext.selectAll("tspan")
+        .data(function (d) {
+          // associate parent data with each new string created
+          textarray = wordwrap(d.name, 20, '\0').split('\0');
+          objarray = [];
+          for (i = 0; i < textarray.length; i++) {
+            objarray[i] = Object();
+            objarray[i].text = textarray[i];
+            objarray[i].x = d.x;
+            objarray[i].y = d.y;
+          }
+          // return each line of the text array
+          return objarray;
+        })
+          // Returns label for the bubble, with some line wrapping formatted into tspans
+          .enter().append('svg:tspan')
+             .attr("x", function (d) { return d.x; })
+             .attr("dy", "1em")
+             .text(function(d) { return d.text; } )
+    ;
 
     var fac_list = d3.select("#faculty-list-container")
             .selectAll("li")
@@ -113,10 +163,6 @@ var pack = d3.layout.pack()
 
 
   });
-
-function d3zoom() {
-  svg.attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")");
-}
 
 /*  for the clicked
  */
