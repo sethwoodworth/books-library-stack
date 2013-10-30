@@ -38,38 +38,36 @@ var pack = d3.layout.pack()
       //.attr("transform", "translate(" + (w - r) / 2 + "," + (h - r) / 2 + ")")
 ;
 
-// define some zoom_level boundaries as constants
-var school_collection_bounds = 1.5;
-var collection_individual_bounds = 2.5;
-// fuzz between boundaries to show more than one layer of bubble labels
-// if desired. fuzz = 0 means only one layer of bubbles may show labels at any
-// moment.
-var fuzz = 0.0;
+// define left alignment percentage. 1/3 means more left, 1/2 is centered, etc.
+var left_align = 1/3;
+// define top alignment percentage. 1/3 means more top, 1/2 is centered, etc.
+var top_align = 1/2;
 
-function text_visibility(d, zoom_level) {
-
-    switch (d.depth) {
-        case 0:
-            // what zoom levels to show the biggest, outer bubble's label
-            if (zoom_level < (school_collection_bounds + fuzz)) return 'visible';
-            else return 'hidden';
-        case 1:
-            // what zoom levels to show the inner, secondary collection bubbles' labels
-            if ((zoom_level >= (school_collection_bounds - fuzz)) &&
-                (zoom_level < (collection_individual_bounds + fuzz))) return 'visible';
-            else return 'hidden';
-        case 2:
-            // what zoom levels to show the smallest, inner bubble's label
-            if (zoom_level >= (collection_individual_bounds - fuzz)) return 'visible';
-            else return 'hidden';
-    }
+// determine optimal scale for zooming to the given object.
+function scale_for(d) {
+    // calculation derived from empirical observation.
+    return 42*Math.pow(d.r, -0.6) - 0.6;
+}
+// determine optimal radius given a scale
+function radius_for(scale) {
+    // inverse of scale_for
+    return Math.pow((scale + 0.6)/42, -1/0.6);
 }
 
-// calculate zoom levels for depths 0, 1, and 2 given zoom boundaries
-var depth_to_scale = Object();
-depth_to_scale[0] = (school_collection_bounds) / 2.0;
-depth_to_scale[1] = (school_collection_bounds + collection_individual_bounds) / 2.0;
-depth_to_scale[2] = 2*collection_individual_bounds - school_collection_bounds;
+// constant of fuzz around when to display text based on zoom.
+// fuzz must be greater than 0.
+// too small and text will almost never show up, too big and multiple
+// layers of bubbles will display text simultaneously.
+var fuzz = 1.7;
+
+// determine when text should be displayed based on bubble radius, current zoom
+// level, and some amount of fuzz.
+function text_visibility(d, scale) {
+    var min_rad = radius_for(scale*fuzz);
+    var max_rad = radius_for(scale/fuzz);
+    if ((min_rad <= d.r) && (d.r <= max_rad)) return 'visible';
+    else return 'hidden';
+}
 
 // font sizes for depths 0, 1, and 2.
 var font_sizes = Object();
@@ -107,7 +105,7 @@ d3.json("d3_hbs/hbs_units.json", function(error, root) {
             return '#ff4160'
             //return u_color(d.name);
             })
-          //.on("click", zoom)
+          //.on("click", zoom_to)
     ;
     //
     // Add Text elements for every faculty
@@ -127,7 +125,7 @@ d3.json("d3_hbs/hbs_units.json", function(error, root) {
     svgtext.selectAll("tspan")
         .data(function (d) {
           // associate parent data with each new string created
-          textarray = wordwrap(d.name, 20, '\0').split('\0');
+          textarray = wordwrap(d.name, 16, '\0').split('\0');
           objarray = [];
           for (i = 0; i < textarray.length; i++) {
             objarray[i] = Object();
@@ -159,12 +157,6 @@ d3.json("d3_hbs/hbs_units.json", function(error, root) {
 
     ;
 
-function zoom_to(d) {
-    // zoom to the given node object in the graph
-    var scale = depth_to_scale[d.depth];
-    var position = [-1*scale*(d.x-d.r), -1*scale*(d.y-d.r)];
-    zthandler.translate(position).scale(scale).event(svg);
-}
 
 
 
@@ -181,9 +173,22 @@ function zoom_to(d) {
     // - do an ajax call to get json book_list content
     // - load book_list template
 
-
+    // zoom to the root object
+    zoom_to(root);
 
   });
+
+// zoom to the given node object in the svg
+function zoom_to(d) {
+    var max = zthandler.size(); // [0,0] in one corner, this array in the diag
+    var scale = scale_for(d);
+    // honestly, I don't know why the math turned out precisely this way for
+    // position. there was much guess and check. -btb
+    var position = [(max[0] - scale * 2 * d.r) * 2*left_align - scale * (d.x - d.r),
+                    (max[1] - scale * 2 * d.r) * top_align - scale * (d.y - d.r)];
+    // BOOM! Update the SVG by calling zoom.event() after moving about
+    zthandler.translate(position).scale(scale).event(svg);
+}
 
 /*  for the clicked
  */
