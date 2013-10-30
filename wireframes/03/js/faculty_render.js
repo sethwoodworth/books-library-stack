@@ -19,11 +19,15 @@ var pack = d3.layout.pack()
     .padding(0)
 ;
 
+  // handle zoom and translate for the SVG.
+  // zooming past 30 isn't meaningful.
+  var zthandler = d3.behavior.zoom().scaleExtent([0,30]);
+
   var svg = d3.select(".faculty-by-unit").append("svg")
       .attr("width", '100%')
       .attr("height", h)
     .append("g")
-      .call(d3.behavior.zoom().on("zoom", function () {
+      .call(zthandler.on("zoom", function () {
         var t = svg.transition().duration( 750 );
         t.selectAll("text").style("visibility", function (d) { return text_visibility(d, d3.event.scale) });
         svg.attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")");
@@ -34,13 +38,15 @@ var pack = d3.layout.pack()
       //.attr("transform", "translate(" + (w - r) / 2 + "," + (h - r) / 2 + ")")
 ;
 
+// define some zoom_level boundaries as constants
+var school_collection_bounds = 1.5;
+var collection_individual_bounds = 2.5;
+// fuzz between boundaries to show more than one layer of bubble labels
+// if desired. fuzz = 0 means only one layer of bubbles may show labels at any
+// moment.
+var fuzz = 0.0;
+
 function text_visibility(d, zoom_level) {
-    // define some zoom_level boundaries.
-    var school_collection_bounds = 1.5;
-    var collection_individual_bounds = 2.5;
-    // fuzz between boundaries to show more than one layer of bubble labels if desired.
-    // fuzz = 0 means only one layer of bubbles may show labels at any moment.
-    var fuzz = 0.0;
 
     switch (d.depth) {
         case 0:
@@ -59,7 +65,13 @@ function text_visibility(d, zoom_level) {
     }
 }
 
-// font_size setter for depths 0, 1, and 2.
+// calculate zoom levels for depths 0, 1, and 2 given zoom boundaries
+var depth_to_scale = Object();
+depth_to_scale[0] = (school_collection_bounds) / 2.0;
+depth_to_scale[1] = (school_collection_bounds + collection_individual_bounds) / 2.0;
+depth_to_scale[2] = 2*collection_individual_bounds - school_collection_bounds;
+
+// font sizes for depths 0, 1, and 2.
 var font_sizes = Object();
 font_sizes[0] = 48;
 font_sizes[1] = 10;
@@ -143,9 +155,16 @@ d3.json("d3_hbs/hbs_units.json", function(error, root) {
                 //.filter(function(d, i) { return i ;})
                 .append("li")
                 .text(function(d) { return d.name;  })
-                //.on("click", zoom)
+                .on("click", zoom_to)
 
     ;
+
+function zoom_to(d) {
+    // zoom to the given node object in the graph
+    var scale = depth_to_scale[d.depth];
+    var position = [-1*scale*(d.x-d.r), -1*scale*(d.y-d.r)];
+    zthandler.translate(position).scale(scale).event(svg);
+}
 
 
 
