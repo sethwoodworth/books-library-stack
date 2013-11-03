@@ -23,8 +23,6 @@ var pack = d3.layout.pack()
       .attr("width", '100%')
       .attr("height", h)
     .append("g");
-      //.attr("transform", "translate(2,2)");
-      //.attr("transform", "translate(" + (w - r) / 2 + "," + (h - r) / 2 + ")");
 
 
   d3.json("d3_hbs/hbs_units.json", function(error, root) {
