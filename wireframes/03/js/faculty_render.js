@@ -28,8 +28,7 @@ var pack = d3.layout.pack()
       .attr("height", h)
     .append("g")
       .call(zthandler.on("zoom", function () {
-        var t = svg.transition().duration( 750 );
-        t.selectAll("text").style("visibility", function (d) { return text_visibility(d, d3.event.scale) });
+        svg.selectAll("text").style("display", function (d) { return text_visibility(d, d3.event.scale) });
         svg.attr("transform", "translate(" + d3.event.translate + ")scale(" + d3.event.scale + ")");
       }))
 
@@ -65,8 +64,8 @@ var fuzz = 1.7;
 function text_visibility(d, scale) {
     var min_rad = radius_for(scale*fuzz);
     var max_rad = radius_for(scale/fuzz);
-    if ((min_rad <= d.r) && (d.r <= max_rad)) return 'visible';
-    else return 'hidden';
+    if ((min_rad <= d.r) && (d.r <= max_rad)) return 'inline';
+    else return 'none';
 }
 
 // font sizes for depths 0, 1, and 2.
@@ -116,9 +115,7 @@ d3.json("d3_hbs/hbs_units.json", function(error, root) {
         .attr("x", function(d) { return d.x; })
         .attr("y", function(d) { return d.y; })
         .attr("font-size", function (d) { return font_sizes[d.depth]; })
-        .attr("text-anchor", "middle")
-        // Show relevant text for initial zoom (initial zoom level is 1)
-        .style("visibility", function (d) { return text_visibility(d, 1) })
+        .attr("text-anchor", "middle");
     ;
 
     // Add word wrapped Tspan elements for every Text element above
