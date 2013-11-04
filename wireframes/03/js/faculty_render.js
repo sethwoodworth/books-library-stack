@@ -153,7 +153,7 @@ d3.json("d3_hbs/hbs_units.json", function(error, root) {
                 //.filter(function(d, i) { return i ;})
                 .append("li")
                 .text(function(d) { return d.name;  })
-                .on("click", zoom_to)
+                .on("click", zoom_and_highlight)
 
     ;
 
@@ -173,10 +173,16 @@ d3.json("d3_hbs/hbs_units.json", function(error, root) {
     // - do an ajax call to get json book_list content
     // - load book_list template
 
-    // zoom to the root object
-    zoom_to(root);
+    // zoom to the root object and setup the right hand menu
+    zoom_and_highlight(root);
 
   });
+
+// zoom to the node and highlight it in the menu
+function zoom_and_highlight(d) {
+    zoom_to(d);
+    menu_highlight(d);
+}
 
 // zoom to the given node object in the svg
 function zoom_to(d) {
@@ -188,6 +194,21 @@ function zoom_to(d) {
                     (max[1] - scale * 2 * d.r) * top_align - scale * (d.y - d.r)];
     // BOOM! Update the SVG by calling zoom.event() after moving about
     zthandler.translate(position).scale(scale).event(svg);
+}
+
+// expand the given submenu with its contents
+function menu_highlight(d) {
+    var menu = d3.select("#svg-info-box ul.accordion").selectAll("li")
+      .data(Array.concat([], d.parent, d, d.children)
+        .filter(function (a) {return a ? a : null;}));
+    // insert (new items)
+    menu.enter().append("li")
+      .text(function (d) {return d.name;})
+      .on("click", zoom_and_highlight);
+    // update (existing items)
+    menu.text(function (d) {return d.name;});
+    // delete (old items)
+    menu.exit().remove();
 }
 
 /*  for the clicked
