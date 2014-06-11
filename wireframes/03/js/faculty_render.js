@@ -3,7 +3,7 @@
 var r = 500,
     w, h,
     color = d3.scale.category20b(),
-    node,
+    nodes,
     root,
     clicked = false,
     prev_k
@@ -75,9 +75,10 @@ font_sizes[1] = 10;
 font_sizes[2] = 2;
 
 
-d3.json("d3_hbs/hbs_units.json", function(error, root) {
+d3.json("d3_hbs/hbs_units.json", function(error, _root) {
     // Create a heirarchical circle packing layout
-    var nodes = pack.nodes(root);
+    root = _root;
+    nodes = pack.nodes(root);
 
     // export my data for other functions
     node_data = nodes;
@@ -187,25 +188,35 @@ function zoom_to(d) {
     var scale = scale_for(d);
     // honestly, I don't know why the math turned out precisely this way for
     // position. there was much guess and check. -btb
-    var position = [(max[0] - scale * 2 * d.r) * 2*left_align - scale * (d.x - d.r),
+    // Sometimes left_align needs to be 2*left_align, other times it can be
+    // 1*left_align. depends on computer. why inconsistent??
+    var position = [(max[0] - scale * 2 * d.r) * left_align - scale * (d.x - d.r),
                     (max[1] - scale * 2 * d.r) * top_align - scale * (d.y - d.r)];
     // BOOM! Update the SVG by calling zoom.event() after moving about
     zthandler.translate(position).scale(scale).event(svg);
 }
 
+// replaces spaces with underscores for valid CSS ids
+function name2id(node) {
+    return node.name.replace(/ /g, '_');
+}
+
 // expand the given submenu with its contents
-function menu_highlight(d) {
-    var menu = d3.select("#svg-info-box ul.accordion").selectAll("li")
-      .data(Array.concat([], d.parent, d, d.children)
-        .filter(function (a) {return a ? a : null;}));
-    // insert (new items)
-    menu.enter().append("li")
-      .text(function (d) {return d.name;})
-      .on("click", zoom_and_highlight);
-    // update (existing items)
-    menu.text(function (d) {return d.name;});
-    // delete (old items)
-    menu.exit().remove();
+function menu_highlight(node) {
+    d3.select("#svg-info-box").html(nested_list([root,]));
+}
+
+// create nested unordered list.
+// nodes represents top-level nodes. Each will start a new unordered list.
+function nested_list(nodes) {
+    // return empty string for empty list.
+    if (!nodes || !nodes.length) return '';
+    else return '<ul>' + nodes.map(_depth_shim).join("</ul><ul>") + '</ul>';
+}
+
+function _nested_list_shim(node, index, array) {
+      if (!node.children) return '<li>' + node.name + '</li>';
+      else return '<li>' + node.name + '<ul>' + node.children.map(_depth_shim).join("") + '</ul></li>';
 }
 
 /*  for the clicked
